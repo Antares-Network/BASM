@@ -5,6 +5,8 @@
 # BASM
 Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owner to allow for private proxied SMP servers to be created and managed by players.
 
+# Plugin has just entered the planning stages, No release date is yet planned
+
 
 ## Functionality:
 - Plugin has entered the planning stages so no features yet exist
