@@ -6,6 +6,7 @@
 Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owner to allow for private proxied SMP servers to be created and managed by players.
 
 # Plugin has just entered the planning stages, No release date is yet planned
+- New versions will be released to github following semantic versioning to the [releases tab](https://github.com/Antares-Network/BASM/releases) 
 
 
 ## Functionality:
@@ -13,10 +14,10 @@ Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owne
 
 
 ## Future features:
-- Allows players to create their own private servers using the /create command from a configurable hub server.
+- Allows players to create their own private servers using the `/create` command from a configurable hub server.
 - When creating a new proxy server, it will copy all of the server files from a configurable server template directory, and update the bungee config without the need to restart bungeecord
 - On registering a new server, it will ask for the discord username of the player if they want to receive news about network updates and performance issues.
-- Monitors TSLL (Time Since Last Login) for players, and shuts down their server if that time exceeds a configurable value.
+- Monitors `TSLL` (Time Since Last Login) for players, and shuts down their server if that time exceeds a configurable value.
 - Checks on login of a player if they have a private server, and if that server is shut down. If so, it runs the start script for that server.
 
 
