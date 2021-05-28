@@ -34,3 +34,7 @@ This file will outline the major functionality of the plugin and serve as a list
 - `{basm_server_nickname}`
 - `{basm_server_discord_id}`
 - `{basm_server_MOTD}`
+
+# Proposed file structure:
+The proposed high level file structure will look something like this  
+![](resources/file_structure.png)
