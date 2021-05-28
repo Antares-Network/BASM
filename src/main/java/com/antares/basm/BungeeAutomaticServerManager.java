@@ -1,8 +1,8 @@
 package com.antares.basm;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import net.md_5.bungee.api.plugin.Plugin;
 
-public class BungeeAutomaticServerManager extends JavaPlugin {
+public class BungeeAutomaticServerManager extends Plugin {
 
     @Override
     public void onEnable() {
