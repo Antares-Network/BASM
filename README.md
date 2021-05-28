@@ -24,8 +24,8 @@ Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owne
 ## Potential features:
 - The ability to link with a Discord Bot so Discord/Minecraft admins can get updated when new servers are created, deleted, shut down, and started
 
-## Dependancies: 
-- There isnt any code yet so 🤷
+## Dependencies: 
+- There isn't any code yet so 🤷
 
 # Versioning:
 - Compiled using Java version 12
@@ -34,8 +34,6 @@ Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owne
 ## Credits:
 - Design by [Nate Goldsborough](https://github.com/nathen418)
 - Code written by [piotrwyrw](https://github.com/piotrwyrw)
-
-
 
 
 ## License
