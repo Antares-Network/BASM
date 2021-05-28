@@ -19,8 +19,15 @@ This file will outline the major functionality of the plugin and serve as a list
 
 - The `TSLL` will be monitored by recording the UTC time the player last logged in. Every 30 minutes, the plugin will ping a NTP server, or grab the current system time, and check it against the list of players with private servers (`server_dictionary.json`). The time difference will be recorded in `server_dictionary.json` as a field assigned to each server. (Example config coming soon)
 
+- The `/basm update [username]` command is used to update the server jar for a specific server to the version of paper that is in the plugins directory, named `latest_paper.jar`. It does this by shutting down the specified server, and overwriting the current server jar with the new `latest_paper.jar`. It will then start the server again and send a configurable message when done.
+
+
+- All configurable messages/notifications/warnings will be defined in a `messages.yml` file.
+
+
 # Possible future features
 - In a future update the plugin may be able to send data to a configurable discord bot that will let network admins know about a variety of things such as performance metrics, when new servers are created, deleted, modified, shut down, and started
+- The ability for users to upload their own plugins.
 
 
 # Permission nodes:
@@ -34,6 +41,22 @@ This file will outline the major functionality of the plugin and serve as a list
 - `{basm_server_nickname}`
 - `{basm_server_discord_id}`
 - `{basm_server_MOTD}`
+
+
+# Proposed Commands:
+- `/basm`  --- displays all basm commands
+- `/basm create` or `/create`  --- Creates a private server
+- `/basm delete` or `/delete`  --- Deletes a private server
+- `/basm edit [nickname/discord/motd] [user supplied value]`  --- Allows a server owner to edit the details of their server
+- `/basm setgloballimit`  --- Sets the global limit on the number of servers
+- `/basm setuserlimit [username] [number]`  --- Sets the limit of the number of servers a certain player can have
+- `/basm [stop/sart] [all/username]`  ---  Stops or starts all basm servers or just the one specified
+- `/basm [remove/restore] [username]`  ---  Moves or restores a server from cold storage
+- `/basm update [username]`  --- Updates a specific server to the new version of paper
+- `/basm version`  --- Displays the current basm plugin version
+- `/basm info`  ---  Displays the credits and the github url of where to find more information on this plugin 
+
+
 
 # Proposed file structure:
 The proposed high level file structure will look something like this  
