@@ -34,7 +34,7 @@ This file will outline the major functionality of the plugin and serve as a list
 - `basm.admin`  --- Allows player to use all basm commands, and modify all basm created servers and their properties
 - `basm.server_owner`  --- Allows player to manage the servers they own
 - `basm.global_count_bypass`  --- Allows player to bypass the global limit to the number of basm cerated servers
-- `basm.user_count_bypass`  --- Allows the player to bypass the user limit to the number of basm creates servers
+- `basm.user_count_bypass`  --- Allows the player to bypass the user limit to the number of basm created servers
 
 # Placeholders:
 - `{basm_server_owner_username}`
