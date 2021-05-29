@@ -1,0 +1,5 @@
+&6Welcome to a private server created on the &eAntares Network
+&aYou are using the &dfree &l&eAntares Server Hosting Tier
+&aJoin our &l&bDiscord Server
+&bdsc.gg/antaresnetwork
+&6Players online:&c {ONLINE} &6- World time:&c {WORLDTIME12}

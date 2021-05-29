@@ -1,0 +1,29 @@
+#███████╗░█████╗░██████╗░███╗░░░███╗░█████╗░████████╗
+#██╔════╝██╔══██╗██╔══██╗████╗░████║██╔══██╗╚══██╔══╝
+#█████╗░░██║░░██║██████╔╝██╔████╔██║███████║░░░██║░░░
+#██╔══╝░░██║░░██║██╔══██╗██║╚██╔╝██║██╔══██║░░░██║░░░
+#██║░░░░░╚█████╔╝██║░░██║██║░╚═╝░██║██║░░██║░░░██║░░░
+#╚═╝░░░░░░╚════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░
+
+## These are the formatting tags your can use in all text/messages and popups
+## They are configurable to suit your needs when formatting text
+
+## Main Branch
+format:
+    
+    ## Hours till server restart
+    hours: '%h'
+    
+    ## Minutes till server restart
+    minutes: '%m'
+    
+    ## Seconds till server restart
+    seconds: '%s'
+    
+    ## Max players amount. This formats the text to `max_players.amount`
+    maxplayers_amount: '%a'
+    
+    ## Max players amount. This formats the text to `max_players.delay`
+    maxplayers_delay: '%d'
+## DO NOT TOUCH!!
+version: 1

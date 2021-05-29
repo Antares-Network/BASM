@@ -1,0 +1,123 @@
+#██████╗░██████╗░██╗██╗░░░██╗░█████╗░████████╗███████╗
+#██╔══██╗██╔══██╗██║██║░░░██║██╔══██╗╚══██╔══╝██╔════╝
+#██████╔╝██████╔╝██║╚██╗░██╔╝███████║░░░██║░░░█████╗░░
+#██╔═══╝░██╔══██╗██║░╚████╔╝░██╔══██║░░░██║░░░██╔══╝░░
+#██║░░░░░██║░░██║██║░░╚██╔╝░░██║░░██║░░░██║░░░███████╗
+#╚═╝░░░░░╚═╝░░╚═╝╚═╝░░░╚═╝░░░╚═╝░░╚═╝░░░╚═╝░░░╚══════╝
+#
+#███╗░░░███╗███████╗░██████╗░██████╗░█████╗░░██████╗░███████╗░██████╗
+#████╗░████║██╔════╝██╔════╝██╔════╝██╔══██╗██╔════╝░██╔════╝██╔════╝
+#██╔████╔██║█████╗░░╚█████╗░╚█████╗░███████║██║░░██╗░█████╗░░╚█████╗░
+#██║╚██╔╝██║██╔══╝░░░╚═══██╗░╚═══██╗██╔══██║██║░░╚██╗██╔══╝░░░╚═══██╗
+#██║░╚═╝░██║███████╗██████╔╝██████╔╝██║░░██║╚██████╔╝███████╗██████╔╝
+#╚═╝░░░░░╚═╝╚══════╝╚═════╝░╚═════╝░╚═╝░░╚═╝░╚═════╝░╚══════╝╚═════╝░
+
+## These are private messages sent to the player when the event is triggered. If the same task is enabled in
+## "global_broadcast", this player will not see the global message, but his own.
+
+## You have the option to enabled/disable these functions, as well as individually enabling/disabling
+## the text message or the title popup.
+
+## Global broadcasts include the prefix in "main.prefix" config.
+## Messages have multi line support!
+## All messages can use the format tags specified in the format.yml config
+
+## To understand ticks. 1 second is relevant to 20 ticks! So a second and a half (1.5s) is 30 ticks!
+## timing is displayed as fadein:stay:fadeout
+## Example: 20:40:20
+##      fadein: 20 (ticks) (1 second)
+##      stay: 40 (ticks) (2 second)
+##      fadeout: 20 (ticks) (1 second)
+## Fadein, stay, fadeout are the 3 arguments. You can edit how long it takes to fadein, fadeout etc.
+## You can also put the fade numbers to 0, and then the popup's will be instant!
+## Get creative!
+
+## Main Branch
+private_messages:
+    ##▀▀█▀▀ ▀█▀ ▒█▀▄▀█ ▒█▀▀▀
+    ##░▒█░░ ▒█░ ▒█▒█▒█ ▒█▀▀▀
+    ##░▒█░░ ▄█▄ ▒█░░▒█ ▒█▄▄▄
+    ## Show the message when type /autore time
+    time:
+        message:
+            enabled: true
+            text:
+                - '&cServer restarting in &f%h&cH &f%m&cM &f%s&cS!'
+        popup:
+            enabled: true
+            title:
+                text: '&cServer Restarting In'
+                timing: '20:40:20'
+            subtitle:
+                text: '&f%h&cH &f%m&cM &f%s&cS!'
+                timing: '20:40:20'
+    ##▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ ▀▀█▀▀ ▒█░▒█ ▒█▀▀▀█
+    ##░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ ░▒█░░ ▒█░▒█ ░▀▀▀▄▄
+    ##▒█▄▄▄█ ░▒█░░ ▒█░▒█ ░▒█░░ ░▀▄▄▀ ▒█▄▄▄█
+    ## Show the message when typed '/autore resume' or '/autore pause'
+    status:
+        ## Show the message when typed '/autore resume'
+        resume:
+            message:
+                enabled: true
+                text:
+                    - '&cYou have resumed AutoRestart timer!'
+            popup:
+                enabled: true
+                title:
+                    text: '&cYou started AutoRestart back up!'
+                    timing: '20:40:20'
+                subtitle:
+                    text: ''
+                    timing: '20:40:20'
+        ## Show the message when typed '/autore pause'
+        pause:
+            message:
+                enabled: true
+                text:
+                    - '&cYou have paused AutoRestart timer'
+            popup:
+                enabled: true
+                title:
+                    text: '&cYou have paused AutoRestart!'
+                    timing: '20:40:20'
+                subtitle:
+                    text: ''
+                    timing: '20:40:20'
+    ##▒█▀▀█ ▒█░▒█ ░█▀▀█ ▒█▄░▒█ ▒█▀▀█ ▒█▀▀▀
+    ##▒█░░░ ▒█▀▀█ ▒█▄▄█ ▒█▒█▒█ ▒█░▄▄ ▒█▀▀▀
+    ##▒█▄▄█ ▒█░▒█ ▒█░▒█ ▒█░░▀█ ▒█▄▄█ ▒█▄▄▄
+    ## Show the broadcast when the server time has been changed!
+    change:
+        message:
+            enabled: true
+            text:
+                - '&cServer now is restarting in &f%h&cH &f%m&cM &f%s&cS!'
+        popup:
+            enabled: true
+            title:
+                text: '&cYou Changed Restart Time to'
+                timing: '20:40:20'
+            subtitle:
+                text: '&f%h&cH &f%m&cM &f%s&cS!'
+                timing: '20:40:20'
+    ##▒█▀▀█ ░█▀▀█ ▒█░▒█ ▒█▀▀▀█ ▒█▀▀▀   ▒█▀▀█ ▒█▀▀▀ ▒█▀▄▀█ ▀█▀ ▒█▄░▒█ ▒█▀▀▄ ▒█▀▀▀ ▒█▀▀█
+    ##▒█▄▄█ ▒█▄▄█ ▒█░▒█ ░▀▀▀▄▄ ▒█▀▀▀   ▒█▄▄▀ ▒█▀▀▀ ▒█▒█▒█ ▒█░ ▒█▒█▒█ ▒█░▒█ ▒█▀▀▀ ▒█▄▄▀
+    ##▒█░░░ ▒█░▒█ ░▀▄▄▀ ▒█▄▄▄█ ▒█▄▄▄   ▒█░▒█ ▒█▄▄▄ ▒█░░▒█ ▄█▄ ▒█░░▀█ ▒█▄▄▀ ▒█▄▄▄ ▒█░▒█
+    ## This shows a reminder to 'autorestart.admin' players that the server is still paused.
+    ## This is to prevent the staff from forgetting to leave the server paused.
+    pause_reminder:
+        message:
+            enabled: true
+            text:
+                - "&cDon't forget that the server countdown is still paused!"
+        popup:
+            enabled: true
+            title:
+                text: "&cDon't forget that"
+                timing: '20:40:20'
+            subtitle:
+                text: '&cAutoRestart timer is still paused!'
+                timing: '20:40:20'
+## DO NOT TOUCH!!
+version: 2
