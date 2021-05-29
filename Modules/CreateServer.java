@@ -77,6 +77,8 @@ public class CreateServer {
         modifyFile("./" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
     }
 
+    //! This will need to be updated to add the player of name 'name' to the whitelist and op list
+
     public static void main(String[] args) throws IOException {
         String name = "nathen418";
         String port = "1234";

@@ -21,7 +21,7 @@ settings:
   connection-throttle: 4000
   query-plugins: true
   deprecated-verbose: default
-  shutdown-message: &f[&dAntares Network Server Hosting&f] Server has shut down. Please contact &dnathen418#0002 &fon discord if you believe this is an error &edsc.gg/antaresnetwork
+  shutdown-message: &dAntares Network Server Hosting&f Server has shut down. Please contact &dnathen418#0002 &fon discord if you believe this is an error &edsc.gg/antaresnetwork
   minimum-api: none
 spawn-limits:
   monsters: 70
