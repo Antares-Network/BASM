@@ -1,0 +1,4 @@
+name: BungeeAutomaticServerManager
+main: com.antares.basm.BungeeAutomaticServerManager
+version: 1.0
+author: Antares_Network
