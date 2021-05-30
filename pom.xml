@@ -38,6 +38,7 @@
                 <directory>src</directory>
                 <includes>
                     <include>plugin.yml</include>
+                    <include>basm.yml</include>
                 </includes>
             </resource>
         </resources>

@@ -25,7 +25,11 @@ public class ConfigHelper {
         if (cfile.exists()) {
             return;
         }
-        InputStream instr = inst.getResourceAsStream(cfile.getName());
+        inst.getLogger().info("BASM configuration does not exist. Copying default config.");
+        if (!inst.getDataFolder().exists()) {
+            inst.getDataFolder().mkdir();
+        }
+        InputStream instr = inst.getResourceAsStream(config_filename);
         try {
             Files.copy(instr, cfile.toPath());
         } catch (IOException e) {
