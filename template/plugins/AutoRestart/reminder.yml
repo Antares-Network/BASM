@@ -1,0 +1,27 @@
+#██████╗░███████╗███╗░░░███╗██╗███╗░░██╗██████╗░███████╗██████╗░
+#██╔══██╗██╔════╝████╗░████║██║████╗░██║██╔══██╗██╔════╝██╔══██╗
+#██████╔╝█████╗░░██╔████╔██║██║██╔██╗██║██║░░██║█████╗░░██████╔╝
+#██╔══██╗██╔══╝░░██║╚██╔╝██║██║██║╚████║██║░░██║██╔══╝░░██╔══██╗
+#██║░░██║███████╗██║░╚═╝░██║██║██║░╚███║██████╔╝███████╗██║░░██║
+#╚═╝░░╚═╝╚══════╝╚═╝░░░░░╚═╝╚═╝╚═╝░░╚══╝╚═════╝░╚══════╝╚═╝░░╚═╝
+
+## Reminders will execute in the specified times to let players know when is the next restart
+
+## Main Branch
+reminder:
+    ## Enables or Disables restart reminder
+    enabled:
+        minutes: true
+        seconds: true
+    ## minutes before restart
+    minutes:
+        - 5
+        - 1
+    ## AutoRestart will countdown the seconds till restart start
+    seconds: 5
+    ## This will remind you that the server timer is paused. This message will be sent to
+    ## people with 'autorestart.admin' permission
+    ## This is set in minutes
+    pause_reminder: 10
+## DO NOT TOUCH!!
+version: 2

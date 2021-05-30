@@ -1,0 +1,32 @@
+#░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░░██████╗
+#██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗██╔════╝
+#╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║╚█████╗░
+#░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║░╚═══██╗
+#██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝██████╔╝
+#╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░╚═════╝░
+
+## This file will allow you to enable/disable sound effects in AutoRestart
+## If the message AND the popup is disabled the sound will not play!
+
+## Main Branch
+sounds:
+    ## This is the sound that is played when everyone receives a message.
+    ## For example, an automated (Server restarting in 15 minutes) is a global broadcast
+    broadcast:
+        ## Enables or disables the sound
+        enabled: true
+    ## This is the sound that is played when a player requests information from the plugin.
+    ## For example, when typing `/autore time`, this is a player requested popup.
+    private:
+        ## Enables or disables the sound
+        enabled: true
+    ## This is the dramatic restart sound that is played seconds before the server restarts.
+    ## You can configure when the sound will start to play, "Its a little long and dramatic"
+    shutdown:
+        ## Enables or disables the sound
+        enabled: true
+        ## I recommend having it at 5 seconds, this is the perfect duration of the sound
+        ## But if you want to make it earlier, that is up to you.
+        seconds: 5
+## DO NOT TOUCH!
+version: 1

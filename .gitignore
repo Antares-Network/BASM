@@ -1,0 +1,7 @@
+.vscode
+bin
+target
+.settings
+.classpath
+.project
+latest_jar

@@ -1,0 +1,38 @@
+#███╗░░░███╗░█████╗░██╗███╗░░██╗
+#████╗░████║██╔══██╗██║████╗░██║
+#██╔████╔██║███████║██║██╔██╗██║
+#██║╚██╔╝██║██╔══██║██║██║╚████║
+#██║░╚═╝░██║██║░░██║██║██║░╚███║
+#╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝╚═╝░░╚══╝
+
+## Main branch
+main:
+    ## Sets the restart command after players have been kicked
+    execution: 'restart'
+    ## This will recalculate the restart countdown when using '/autore reload'
+    recalculate_onreload: false
+    ## Restart modes available 'interval', and 'timestamp'
+    restart_mode: 'interval'
+    ## Restart mode specific settings
+    modes:
+        ## Restart server in intervals
+        interval:
+            ## Set the multiplication factor
+            ## Options are 'hours' or 'days'
+            factor: 'hours'
+            ## Set the value of the interval
+            ## Decimals are allowed
+            value: 3.0
+        ## Set the timestamp in 24 hour time format HH:MM
+        ## Multiple timestamps allowed
+        timestamp:
+            - '0:00'
+            - '6:00'
+            - '12:00'
+            - '18:00'
+    ## Server wide prefix for all chat broadcasts
+    prefix: '&7&l[&3AutoRestart&7&l] &e'
+    ## Client restart message in game chat
+    kick_message: '&a The server you were connected to is restarting. You have been connected to the Main Lobby Server. Feel free to look around while your server restarts.'
+## DO NOT TOUCH!!
+version: 4

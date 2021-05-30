@@ -1,0 +1,32 @@
+#███╗░░░███╗░█████╗░██╗░░██╗  ██████╗░██╗░░░░░░█████╗░██╗░░░██╗███████╗██████╗░░██████╗
+#████╗░████║██╔══██╗╚██╗██╔╝  ██╔══██╗██║░░░░░██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗██╔════╝
+#██╔████╔██║███████║░╚███╔╝░  ██████╔╝██║░░░░░███████║░╚████╔╝░█████╗░░██████╔╝╚█████╗░
+#██║╚██╔╝██║██╔══██║░██╔██╗░  ██╔═══╝░██║░░░░░██╔══██║░░╚██╔╝░░██╔══╝░░██╔══██╗░╚═══██╗
+#██║░╚═╝░██║██║░░██║██╔╝╚██╗  ██║░░░░░███████╗██║░░██║░░░██║░░░███████╗██║░░██║██████╔╝
+#╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝  ╚═╝░░░░░╚══════╝╚═╝░░╚═╝░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚═════╝░
+
+## This will stop your server from shutting down if you have more than X amount of players configured in "amount".
+
+## This is a beta feature. If you have any ideas, or recommendations about this feature you would like to
+## add. Do not hesitate to message me on SpigotMC. I would love to hear what your think I should change/add!
+## I love feedback and ideas.
+
+## Main branch
+max_players:
+    ## Enable or Disable this feature
+    enabled: false
+    ## The max amount of players allowed for a restart. If you set this to 10, and your server has 11 people online
+    ## your server will not shutdown until the amount of players is less than of equal to the amount set.
+    amount: 10
+    ## The delay for the server to restart once player count as been met.
+    ## If players join the server during this delay, the server will continue to restart.
+    ## This is in seconds
+    delay: 10
+    ## The timeout is the amount of time AutoRestart will give to the players to log out.
+    ## If the amount is never reached within X minutes, then the server
+    ## Will force restart. This prevents the server from never restarting due to high player traffic,
+    ## but will give players time to wrap up their tasks.
+    ## This is in minutes.
+    timeout: 15
+## DO NOT TOUCH!!
+version: 4

@@ -1,0 +1,187 @@
+#░██████╗░██╗░░░░░░█████╗░██████╗░░█████╗░██╗░░░░░
+#██╔════╝░██║░░░░░██╔══██╗██╔══██╗██╔══██╗██║░░░░░
+#██║░░██╗░██║░░░░░██║░░██║██████╦╝███████║██║░░░░░
+#██║░░╚██╗██║░░░░░██║░░██║██╔══██╗██╔══██║██║░░░░░
+#╚██████╔╝███████╗╚█████╔╝██████╦╝██║░░██║███████╗
+#░╚═════╝░╚══════╝░╚════╝░╚═════╝░╚═╝░░╚═╝╚══════╝
+#
+#██████╗░██████╗░░█████╗░░█████╗░██████╗░░█████╗░░█████╗░░██████╗████████╗░██████╗
+#██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██╔════╝
+#██████╦╝██████╔╝██║░░██║███████║██║░░██║██║░░╚═╝███████║╚█████╗░░░░██║░░░╚█████╗░
+#██╔══██╗██╔══██╗██║░░██║██╔══██║██║░░██║██║░░██╗██╔══██║░╚═══██╗░░░██║░░░░╚═══██╗
+#██████╦╝██║░░██║╚█████╔╝██║░░██║██████╔╝╚█████╔╝██║░░██║██████╔╝░░░██║░░░██████╔╝
+#╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚═════╝░░╚════╝░╚═╝░░╚═╝╚═════╝░░░░╚═╝░░░╚═════╝░
+
+## Broadcasts adds flexibility on what you want your players to see!
+## Everyone will see these messages, except the person initiating the command.
+## They will receive their own Private Message.
+
+## You have the option to enabled/disable these functions, as well as individually enabling/disabling
+## the text message or the title popup.
+
+## Global broadcasts include the prefix in "main.prefix" config.
+## Messages have multi line support!
+## All messages can use the format tags specified in the format.yml config
+
+## To understand ticks. 1 second is relevant to 20 ticks! So a second and a half (1.5s) is 30 ticks!
+## timing is displayed as fadein:stay:fadeout
+## Example: 20:40:20
+##      fadein: 20 (ticks) (1 second)
+##      stay: 40 (ticks) (2 second)
+##      fadeout: 20 (ticks) (1 second)
+## Fadein, stay, fadeout are the 3 arguments. You can edit how long it takes to fadein, fadeout etc.
+## You can also put the fade numbers to 0, and then the popup's will be instant!
+## Get creative!
+
+## Main Branch
+global_broadcasts:
+    ##▒█▀▄▀█ ▀█▀ ▒█▄░▒█ ▒█░▒█ ▀▀█▀▀ ▒█▀▀▀ ▒█▀▀▀█
+    ##▒█▒█▒█ ▒█░ ▒█▒█▒█ ▒█░▒█ ░▒█░░ ▒█▀▀▀ ░▀▀▀▄▄
+    ##▒█░░▒█ ▄█▄ ▒█░░▀█ ░▀▄▄▀ ░▒█░░ ▒█▄▄▄ ▒█▄▄▄█
+    ## Broadcast message for the minute reminder
+    minutes:
+        message:
+            enabled: true
+            text:
+                - 'Server Will Restart In %m Minutes!'
+        popup:
+            enabled: true
+            title:
+                text: '&cServer Restarting In'
+                timing: '20:40:20'
+            subtitle:
+                text: '&f%m &cMinutes!'
+                timing: '20:40:20'
+    ##▒█▀▀▀█ ▒█▀▀▀ ▒█▀▀█ ▒█▀▀▀█ ▒█▄░▒█ ▒█▀▀▄ ▒█▀▀▀█
+    ##░▀▀▀▄▄ ▒█▀▀▀ ▒█░░░ ▒█░░▒█ ▒█▒█▒█ ▒█░▒█ ░▀▀▀▄▄
+    ##▒█▄▄▄█ ▒█▄▄▄ ▒█▄▄█ ▒█▄▄▄█ ▒█░░▀█ ▒█▄▄▀ ▒█▄▄▄█
+    ## Broadcast message for the second reminder
+    seconds:
+        message:
+            enabled: true
+            text:
+                - 'Server is restarting in %s Seconds!'
+        popup:
+            enabled: true
+            title:
+                text: '&cServer Restarting In'
+                timing: '5:20:5'
+            subtitle:
+                text: '&f%s &cSeconds!'
+                timing: '5:20:5'
+    ##▒█▀▀▀█ ▀▀█▀▀ ░█▀▀█ ▀▀█▀▀ ▒█░▒█ ▒█▀▀▀█
+    ##░▀▀▀▄▄ ░▒█░░ ▒█▄▄█ ░▒█░░ ▒█░▒█ ░▀▀▀▄▄
+    ##▒█▄▄▄█ ░▒█░░ ▒█░▒█ ░▒█░░ ░▀▄▄▀ ▒█▄▄▄█
+    ## Show the broadcast when '/autore resume' or '/autore pause' is called
+    status:
+        ## Show the broadcast when typed '/autore resume'
+        resume:
+            message:
+                enabled: true
+                text:
+                    - '&cAutoRestart timer has resumed!'
+            popup:
+                enabled: true
+                title:
+                    text: '&cAutoRestart has started!'
+                    timing: '20:40:20'
+                subtitle:
+                    text: ''
+                    timing: '20:40:20'
+        ## Show the broadcast when typed '/autore pause'
+        pause:
+            message:
+                enabled: true
+                text:
+                    - '&cAutoRestart timer has been paused'
+            popup:
+                enabled: true
+                title:
+                    text: '&cAutoRestart has been paused!'
+                    timing: '20:40:20'
+                subtitle:
+                    text: ''
+                    timing: '20:40:20'
+    ##▒█▀▀█ ▒█░▒█ ░█▀▀█ ▒█▄░▒█ ▒█▀▀█ ▒█▀▀▀
+    ##▒█░░░ ▒█▀▀█ ▒█▄▄█ ▒█▒█▒█ ▒█░▄▄ ▒█▀▀▀
+    ##▒█▄▄█ ▒█░▒█ ▒█░▒█ ▒█░░▀█ ▒█▄▄█ ▒█▄▄▄
+    ## Show the broadcast when '/autore in' is called
+    change:
+        message:
+            enabled: true
+            text:
+                - '&cServer now is restarting in &f%h&cH &f%m&cM &f%s&cS!'
+        popup:
+            enabled: true
+            title:
+                text: '&cServer Restarting In'
+                timing: '20:40:20'
+            subtitle:
+                text: '&f%h&cH &f%m&cM &f%s&cS!'
+                timing: '20:40:20'
+    ##▒█▀▄▀█ ░█▀▀█ ▀▄▒▄▀   ▒█▀▀█ ▒█░░░ ░█▀▀█ ▒█░░▒█ ▒█▀▀▀ ▒█▀▀█ ▒█▀▀▀█
+    ##▒█▒█▒█ ▒█▄▄█ ░▒█░░   ▒█▄▄█ ▒█░░░ ▒█▄▄█ ▒█▄▄▄█ ▒█▀▀▀ ▒█▄▄▀ ░▀▀▀▄▄
+    ##▒█░░▒█ ▒█░▒█ ▄▀▒▀▄   ▒█░░░ ▒█▄▄█ ▒█░▒█ ░░▒█░░ ▒█▄▄▄ ▒█░▒█ ▒█▄▄▄█
+    ## Show the Maxplayers broadcast
+    max_players:
+        ## The message broadcasted when too many players are online on restart!
+        alert:
+            message:
+                enabled: true
+                text:
+                    - '&bToo many players online for restart. Max &f%a&b amount of players allowed for a restart. Waiting for players to leave!'
+            popup:
+                enabled: true
+                title:
+                    text: '&bToo many players online for restart.'
+                    timing: '20:40:20'
+                subtitle:
+                    text: 'Max &f%a&b amount of players allowed for a restart.'
+                    timing: '20:40:20'
+        ## This message appears when the amount of players requirement is met!
+        pre_shutdown:
+            message:
+                enabled: true
+                text:
+                    - '&aServer now restarting in &f%d&a seconds!'
+            popup:
+                enabled: true
+                title:
+                    text: '&aServer now restarting in &f%d&a seconds!'
+                    timing: '20:40:20'
+                subtitle:
+                    text: ''
+                    timing: '20:40:20'
+        ## This message appears when the timeout has been reached
+        timeout:
+            message:
+                enabled: true
+                text:
+                    - '&aPlayers took too long to leave!'
+            popup:
+                enabled: true
+                title:
+                    text: '&aPlayers took too long to leave!'
+                    timing: '20:40:20'
+                subtitle:
+                    text: '&aServer now restarting in &f%d&a seconds!'
+                    timing: '20:40:20'
+    ##▒█▀▀▀█ ▒█░▒█ ▒█░▒█ ▀▀█▀▀ ▒█▀▀▄ ▒█▀▀▀█ ▒█░░▒█ ▒█▄░▒█
+    ##░▀▀▀▄▄ ▒█▀▀█ ▒█░▒█ ░▒█░░ ▒█░▒█ ▒█░░▒█ ▒█▒█▒█ ▒█▒█▒█
+    ##▒█▄▄▄█ ▒█░▒█ ░▀▄▄▀ ░▒█░░ ▒█▄▄▀ ▒█▄▄▄█ ▒█▄▀▄█ ▒█░░▀█
+    ## Global shutdown message
+    shutdown:
+        message:
+            enabled: true
+            text:
+                - '&cServer Restarting!'
+        popup:
+            enabled: true
+            title:
+                text: '&cServer is now'
+                timing: '20:80:20'
+            subtitle:
+                text: '&cRestarting!'
+                timing: '20:80:20'
+## DO NOT TOUCH!!
+version: 2
