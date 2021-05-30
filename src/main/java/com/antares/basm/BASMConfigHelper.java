@@ -11,25 +11,21 @@ import java.nio.file.Files;
 
 enum Port { PORT_MIN, PORT_MAX }
 
-public class ConfigHelper {
+public class BASMConfigHelper {
 
-    private static String config_filename;
-
-    public static void setConfigFileName(String nconfig_filename) {
-        config_filename = nconfig_filename;
-    }
+    private static final String config_filename = "basm.yml";
 
     public static void createIfNotPresent() {
-        BungeeAutomaticServerManager inst = BungeeAutomaticServerManager.getInstance();
-        File cfile = new File(inst.getDataFolder(), config_filename);
+        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
+        File cfile = new File(basm.getDataFolder(), config_filename);
         if (cfile.exists()) {
             return;
         }
-        inst.getLogger().info("BASM configuration does not exist. Copying default config.");
-        if (!inst.getDataFolder().exists()) {
-            inst.getDataFolder().mkdir();
+        basm.getLogger().info("Copying default BASM config.");
+        if (!basm.getDataFolder().exists()) {
+            basm.getDataFolder().mkdir();
         }
-        InputStream instr = inst.getResourceAsStream(config_filename);
+        InputStream instr = basm.getResourceAsStream(config_filename);
         try {
             Files.copy(instr, cfile.toPath());
         } catch (IOException e) {
@@ -44,6 +40,16 @@ public class ConfigHelper {
             config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(basm.getDataFolder(), config_filename));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        if (config.get("port-min") == null || config.get("port-max") == null) {
+            basm.getLogger().info("BASM config is defective. Regenerating.");
+            new File(basm.getDataFolder(), config_filename).delete();
+            createIfNotPresent();
+            try {
+                config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(basm.getDataFolder(), config_filename));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         int p = -1;
         switch (port) {

@@ -15,8 +15,7 @@ public class BungeeAutomaticServerManager extends Plugin {
     @Override
     public void onEnable() {
         instance = this;
-        ConfigHelper.setConfigFileName("basm.yml");
-        ConfigHelper.createIfNotPresent();
+        BASMConfigHelper.createIfNotPresent();
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBASM());
     }
 

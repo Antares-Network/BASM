@@ -1,7 +1,9 @@
 package com.antares.basm;
 
+import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import java.net.InetSocketAddress;
+import java.util.Collection;
 import java.util.UUID;
 
 public class ServerCreator {
@@ -22,8 +24,16 @@ public class ServerCreator {
         this.port = ServerHelper.nextFreePort();
     }
 
-    void create() {
-        // TODO Add server to BungeeCord and its config
+    public StateMessage[] create() {
+        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
+        ServerInfo info = basm.getProxy().constructServerInfo(player.getName(), address, motd, restricted);
+        StateMessage[] messages = new StateMessage[2];
+        messages[0] = ServerHelper.addServer(info);
+        if (messages[0].state == State.ERROR) {
+            return new StateMessage[] {messages[0]};
+        }
+        messages[1] = ServerHelper.addServerToConfig(info);
+        return messages;
     }
 
 }
