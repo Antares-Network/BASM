@@ -1,2 +1,18 @@
-port-min: 25578
+# This is the main configuration file for BungeeAutomaticServerManager.
+# There isn't much to configure but if you need assistance, look at the wiki at
+# https://github.com/Antares-Network/BASM/wiki
+# 
+# Discord Server: https://dsc.gg/antaresnetwork
+# Main page: https://github.com/Antares-Network
+
+
+# Begin configuration
+# port-min ---> The minimum port number the plugin can assign a new server
+# port-max ---> The maximum port number the plugin can assign a new server
+port-min: 25571
 port-max: 25590
+
+# template-directory ---> The directory the plugin will search for a template server
+template-directory: ../template
+
+# 
