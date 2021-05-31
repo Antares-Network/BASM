@@ -1,3 +1,4 @@
+[![Current Build:](https://github.com/Antares-Network/BASM/actions/workflows/maven.yml/badge.svg)](https://github.com/Antares-Network/BASM/actions/workflows/maven.yml)
 ![](https://img.shields.io/github/repo-size/Antares-Network/BASM?color=Green&style=flat-square)
 ![](https://img.shields.io/tokei/lines/github/Antares-Network/BASM?style=flat-square)  
 ![](https://cdn.discordapp.com/icons/649703068799336454/1a7ef8f706cd60d62547d2c7dc08d6f0.png) 
@@ -23,11 +24,11 @@ Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owne
 - There isn't any code yet so 🤷
 
 # Versioning:
-- Compiled using Java version 12
+- Compiled using Java version 11
 
 
 ## Credits:
-- Design by [Nate Goldsborough](https://github.com/nathen418)
+- Design and some code by [Nate Goldsborough](https://github.com/nathen418)
 - Code written by [piotrwyrw](https://github.com/piotrwyrw)
 
 
