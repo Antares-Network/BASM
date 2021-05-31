@@ -6,20 +6,12 @@ import com.antares.basm.ServerHelper;
 import com.antares.basm.StateMessage;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.TextComponent;
-import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import net.md_5.bungee.api.connection.Server;
 import net.md_5.bungee.api.plugin.Command;
-import net.md_5.bungee.config.Configuration;
-import net.md_5.bungee.config.YamlConfiguration;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.UUID;
+//import java.util.UUID; //!To be changed later if needed. Maybe we should add this as a configurable option to have the servers registered under UUID's rather than usernames
 
 public class CommandBASM extends Command {
 
@@ -29,10 +21,8 @@ public class CommandBASM extends Command {
 
     void sendHelp(String cmd, CommandSender sender) {
         if (cmd.equalsIgnoreCase("basm")) {
-            sender.sendMessage(
-                    new ComponentBuilder("/basm [help | info | reload | create | server <server>]")
-                            .color(ChatColor.RED)
-                            .create());
+            sender.sendMessage(new ComponentBuilder("/basm [help | info | reload | create | server <server>]")
+                    .color(ChatColor.RED).create());
         }
     }
 
@@ -44,20 +34,25 @@ public class CommandBASM extends Command {
         if (args.length == 1 && args[0].equalsIgnoreCase("create")) {
             if (!(sender instanceof ProxiedPlayer)) {
                 sender.sendMessage(new ComponentBuilder("You have to be a player to execute this command.")
-                        .color(ChatColor.RED)
-                        .create());
+                        .color(ChatColor.RED).create());
                 return;
             }
-            BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
+            BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance(); //! This var is defined but never used
             ProxiedPlayer player = (ProxiedPlayer) sender;
             int port = ServerHelper.nextFreePort();
-            String motd = "BASM Server (" + String.valueOf(port) + ")";
+            String motd = player + "'s Server (" + String.valueOf(port) + ")";
             boolean restricted = false;
             InetSocketAddress address = new InetSocketAddress("localhost", port);
             ServerCreator creator = new ServerCreator(player, address, motd, restricted);
             for (StateMessage stateMessage : creator.create()) {
                 sender.sendMessage(stateMessage.construct());
             }
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("info")) {
+            sender.sendMessage(new ComponentBuilder("BungeeAutomaticServerManager (BASM)").color(ChatColor.GREEN).create());
+            sender.sendMessage(new ComponentBuilder("Design by Nate Goldsborough Code written by piotrwyrw").color(ChatColor.GREEN).create());
+            sender.sendMessage(new ComponentBuilder("/basm help to see a list of commands").color(ChatColor.GREEN).create());
+            return;
         }
     }
 }
