@@ -1,9 +1,7 @@
 package com.antares.basm;
-
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import java.net.InetSocketAddress;
-import java.util.Collection;
 import java.util.UUID;
 
 public class ServerCreator {
