@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class CreateServer {
+public class ServerFileManager {
     static void modifyFile(String filePath, String oldString, String newString) {
         File fileToBeModified = new File(filePath);
         String oldContent = "";
