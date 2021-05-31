@@ -1,9 +1,10 @@
 package com.antares.basm;
-
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+
+import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.util.Collection;
+import java.net.URISyntaxException;
 import java.util.UUID;
 
 public class ServerCreator {
@@ -27,6 +28,13 @@ public class ServerCreator {
     public StateMessage[] create() {
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
         ServerInfo info = basm.getProxy().constructServerInfo(player.getName(), address, motd, restricted);
+        try {
+            ServerFileManager result = new ServerFileManager(player.getName(), address.getAddress().getHostName() + ":" + String.valueOf(info.getAddress().getPort()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
         StateMessage[] messages = new StateMessage[2];
         messages[0] = ServerHelper.addServer(info);
         if (messages[0].state == State.ERROR) {
