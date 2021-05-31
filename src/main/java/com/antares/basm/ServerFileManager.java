@@ -1,8 +1,10 @@
+package com.antares.basm;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,6 +13,14 @@ import java.util.Date;
 import java.util.TimeZone;
 
 public class ServerFileManager {
+    public ServerFileManager(String name, String port) throws IOException, URISyntaxException {
+        newDir(name);
+        editProperties(name, port);
+        editStartScript(name);
+        editPAPIConfig(name);
+        System.out.println("All modifications completed successfully");
+    }
+    
     static void modifyFile(String filePath, String oldString, String newString) {
         File fileToBeModified = new File(filePath);
         String oldContent = "";
@@ -42,8 +52,17 @@ public class ServerFileManager {
         }
     }
 
-    public static void newDir(String path) throws IOException {
-        final Path fromPath = Paths.get("template");
+    public static void newDir(String path) throws IOException, URISyntaxException {
+
+        String jarPath = ServerFileManager.class
+        .getProtectionDomain()
+        .getCodeSource()
+        .getLocation()
+        .toURI()
+        .getPath();
+
+        //! this will have to change at some point as it causes creation to crash oops
+        final Path fromPath = Paths.get(jarPath.substring(0, jarPath.length() - "BASM-alpha.jar".length()) + "template");
 
         Files.walk(fromPath).forEach(source -> copySourceToDest(path, fromPath, source));
     }
@@ -70,22 +89,12 @@ public class ServerFileManager {
     }
 
     public static void editStartScript(String name) {
-        modifyFile("./" + name + "/start.sh", "template", name);
+        modifyFile(".../" + name + "/start.sh", "template", name);
     }
 
     public static void editPAPIConfig(String name){
-        modifyFile("./" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
+        modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
     }
 
     //! This will need to be updated to add the player of name 'name' to the whitelist and op list
-
-    public static void main(String[] args) throws IOException {
-        String name = "nathen418";
-        String port = "1234";
-        newDir(name);
-        editProperties(name, port);
-        editStartScript(name);
-        editPAPIConfig(name);
-        System.out.println("All modifications completed successfully");
-    }
 }
