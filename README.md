@@ -24,10 +24,11 @@ Bungee Automatic Server Manager is a BungeeCord plugin that allows a server owne
 - You can find a more in depth outline of how the plugin will work here [outline](https://github.com/Antares-Network/BASM/blob/main/OUTLINE.md)
 
 ## Dependencies: 
-- There isn't any code yet so 🤷
+- net.md_5.bungee.api
+- normal built in java classes
 
 # Versioning:
-- Compiled using Java version 12
+- Compiled using Java version 11
 
 
 ## Credits:
