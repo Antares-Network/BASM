@@ -11,16 +11,19 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.UUID;
 
 public class ServerFileManager {
-    public ServerFileManager(String name, String port) throws IOException, URISyntaxException {
+    public ServerFileManager(String name, String port, UUID UUID) throws IOException, URISyntaxException {
         newDir(name);
         editProperties(name, port);
         editStartScript(name);
         editPAPIConfig(name);
+        editAccess(name, UUID);
+        // serverStart(name);
         System.out.println("All modifications completed successfully");
     }
-    
+
     static void modifyFile(String filePath, String oldString, String newString) {
         File fileToBeModified = new File(filePath);
         String oldContent = "";
@@ -52,23 +55,15 @@ public class ServerFileManager {
         }
     }
 
-    public static void newDir(String path) throws IOException, URISyntaxException {
+    public static void newDir(String path) throws IOException {
+        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
 
-        String jarPath = ServerFileManager.class
-        .getProtectionDomain()
-        .getCodeSource()
-        .getLocation()
-        .toURI()
-        .getPath();
-
-        //! this will have to change at some point as it causes creation to crash oops
-        final Path fromPath = Paths.get(jarPath.substring(0, jarPath.length() - "BASM-alpha.jar".length()) + "template");
-
+        Path fromPath = new File(basm.getProxy().getPluginsFolder(), "template/").toPath();
         Files.walk(fromPath).forEach(source -> copySourceToDest(path, fromPath, source));
     }
 
-    private static void copySourceToDest(String dest, Path fromPath, Path source) {
-        Path destination = Paths.get(dest, source.toString().substring(fromPath.toString().length()));
+    public static void copySourceToDest(String dest, Path fromPath, Path source) {
+        Path destination = Paths.get("../" + dest, source.toString().substring(fromPath.toString().length()));
         try {
             Files.copy(source, destination);
 
@@ -77,24 +72,38 @@ public class ServerFileManager {
         }
     }
 
+
     public static void editProperties(String name, String port) {
         // Get the current date and format it appropriately
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        modifyFile("./" + name + "/server.properties", "#creationTime", "# Server Created at: " + simpleDateFormat.format(new Date()));
-        modifyFile("./" + name + "/server.properties", "serverPort", port);
-        modifyFile("./" + name + "/server.properties", "rconPort", port);
-        modifyFile("./" + name + "/server.properties", "queryPort", port);
-        modifyFile("./" + name + "/server.properties", "serverMOTD", name);
+        modifyFile("../" + name + "/server.properties", "#creationTime", "# Server Created at: " + simpleDateFormat.format(new Date()));
+        modifyFile("../" + name + "/server.properties", "serverPort", port);
+        modifyFile("../" + name + "/server.properties", "rconPort", port);
+        modifyFile("../" + name + "/server.properties", "queryPort", port);
+        modifyFile("../" + name + "/server.properties", "serverMOTD", name);
     }
 
     public static void editStartScript(String name) {
-        modifyFile(".../" + name + "/start.sh", "template", name);
+        modifyFile("../" + name + "/start.sh", "template", name);
     }
 
     public static void editPAPIConfig(String name){
         modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
     }
 
-    //! This will need to be updated to add the player of name 'name' to the whitelist and op list
+    private void editAccess(String name, UUID UUID) {
+        // edit the whitelist.json
+        modifyFile("../" + name + "/whitelist.json", "playerUUID", UUID.toString());
+        modifyFile("../" + name + "/whitelist.json", "username", name);
+
+        // Edit the ops.json
+        modifyFile("../" + name + "/ops.json", "playerUUID", UUID.toString());
+        modifyFile("../" + name + "/ops.json", "username", name);
+    }
+
+    public static void serverStart(String name) throws IOException{
+        Runtime.getRuntime().exec("../" + name + "/./start.sh");
+        System.out.println("Server has been started");
+    }
 }
