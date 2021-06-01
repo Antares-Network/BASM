@@ -29,7 +29,7 @@ public class ServerCreator {
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
         ServerInfo info = basm.getProxy().constructServerInfo(player.getName(), address, motd, restricted);
         try {
-            ServerFileManager result = new ServerFileManager(player.getName(), address.getAddress().getHostName() + ":" + String.valueOf(info.getAddress().getPort()));
+            ServerFileManager result = new ServerFileManager(player.getName(), String.valueOf(info.getAddress().getPort()), player.getUniqueId());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
