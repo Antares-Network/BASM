@@ -49,4 +49,12 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Aantares-Network Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/Antares-Network/BASM</url>
+        </repository>
+     </distributionManagement>
+
 </project>
