@@ -2,7 +2,8 @@
 
 # Allowed authentication tokens.
 allowed-tokens:
-  - WYHM5ulh56iOrGaCHgW43jdst50CXwDAGAZee3p6ruImzOym2W1aB659mDfxrCQr
+  - Secret Key
+
 #  - "you can add as many as you like."
 
 
