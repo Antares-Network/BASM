@@ -1,8 +1,8 @@
 [![Discord](https://discordapp.com/api/guilds/649703068799336454/widget.png)](https://discordapp.com/invite/KKYw763)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Antares-Network/BASM?style=social)
-[![Current Build:](https://github.com/Antares-Network/BASM/actions/workflows/maven.yml/badge.svg)](https://github.com/Antares-Network/BASM/actions/workflows/maven.yml)
+[![Current Build:](https://github.com/Antares-Network/BASM/actions/workflows/maven.yml/badge.svg)](https://github.com/Antares-Network/BASM/actions/workflows/maven.yml)  
 ![](https://img.shields.io/github/repo-size/Antares-Network/BASM?color=Green&style=flat-square)
-![](https://img.shields.io/tokei/lines/github/Antares-Network/BASM?style=flat-square)  
+![](https://img.shields.io/tokei/lines/github/Antares-Network/BASM?style=flat-square)
 ![](https://img.shields.io/github/downloads/Antares-Network/BASM/total?style=flat-square)  
 ![](https://cdn.discordapp.com/icons/649703068799336454/1a7ef8f706cd60d62547d2c7dc08d6f0.png) 
 
