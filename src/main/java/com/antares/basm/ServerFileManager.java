@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +21,7 @@ public class ServerFileManager {
         editStartScript(name);
         editPAPIConfig(name);
         editAccess(name, UUID);
-        // serverStart(name);
+        serverStart(name);
         System.out.println("All modifications completed successfully");
     }
 
@@ -103,7 +104,20 @@ public class ServerFileManager {
     }
 
     public static void serverStart(String name) throws IOException{
-        Runtime.getRuntime().exec("../" + name + "/./start.sh");
+        System.out.println(new File(".").getAbsolutePath().replace("waterfall/.",name) + "/start.sh");
+        Process proc = new ProcessBuilder(new File(".").getAbsolutePath().replace("waterfall/.",name) + "/start.sh").start(); 
+
+
+        try (var reader = new BufferedReader(
+            new InputStreamReader(proc.getInputStream()))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+        }
         System.out.println("Server has been started");
     }
 }
