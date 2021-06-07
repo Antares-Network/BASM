@@ -1,9 +1,11 @@
 package com.antares.basm;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -73,12 +75,12 @@ public class ServerFileManager {
         }
     }
 
-
     public static void editProperties(String name, String port) {
         // Get the current date and format it appropriately
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        modifyFile("../" + name + "/server.properties", "#creationTime", "# Server Created at: " + simpleDateFormat.format(new Date()));
+        modifyFile("../" + name + "/server.properties", "#creationTime",
+                "# Server Created at: " + simpleDateFormat.format(new Date()));
         modifyFile("../" + name + "/server.properties", "serverPort", port);
         modifyFile("../" + name + "/server.properties", "rconPort", port);
         modifyFile("../" + name + "/server.properties", "queryPort", port);
@@ -89,7 +91,7 @@ public class ServerFileManager {
         modifyFile("../" + name + "/start.sh", "template", name);
     }
 
-    public static void editPAPIConfig(String name){
+    public static void editPAPIConfig(String name) {
         modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
     }
 
@@ -103,20 +105,20 @@ public class ServerFileManager {
         modifyFile("../" + name + "/ops.json", "username", name);
     }
 
-    public static void serverStart(String name) throws IOException{
-        System.out.println(new File(".").getAbsolutePath().replace("waterfall/.",name) + "/start.sh");
-        Process proc = new ProcessBuilder(new File(".").getAbsolutePath().replace("waterfall/.",name) + "/start.sh").start(); 
-
-
-        try (var reader = new BufferedReader(
-            new InputStreamReader(proc.getInputStream()))) {
-
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-            }
-
+    public static void serverStart(String name) throws IOException {
+        System.out.println("cd " + new File(".").getAbsolutePath().replace("waterfall/.", name));
+        // "cd " + new File(".").getAbsolutePath().replace("waterfall/.", name)
+        ProcessBuilder pb = new ProcessBuilder(
+                new String[] {"java", "-jar", new File(".").getAbsolutePath().replace("waterfall/.", name) + "/paper_latest.jar"});
+                // new String[] { "sh", new File(".").getAbsolutePath().replace("waterfall/.", name) + "/start.sh" });
+        pb.redirectErrorStream(true);
+        try {
+            Thread.sleep(8000);
+            Process p = pb.start();
+        } catch (IOException exp) {
+            exp.printStackTrace();
+        } catch (InterruptedException exp) {
+            exp.printStackTrace();
         }
         System.out.println("Server has been started");
     }
