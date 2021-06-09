@@ -4,6 +4,8 @@ import com.antares.basm.BungeeAutomaticServerManager;
 import com.antares.basm.ServerCreator;
 import com.antares.basm.ServerHelper;
 import com.antares.basm.StateMessage;
+import com.antares.basm.startup;
+
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -50,8 +52,13 @@ public class CommandBASM extends Command {
         }
         if (args.length == 1 && args[0].equalsIgnoreCase("info")) {
             sender.sendMessage(new ComponentBuilder("BungeeAutomaticServerManager (BASM)").color(ChatColor.GREEN).create());
-            sender.sendMessage(new ComponentBuilder("Design by Nate Goldsborough Code written by piotrwyrw").color(ChatColor.GREEN).create());
+            sender.sendMessage(new ComponentBuilder("Design by nathen418; Code written by piotrwyrw and nathen418").color(ChatColor.GREEN).create());
             sender.sendMessage(new ComponentBuilder("/basm help to see a list of commands").color(ChatColor.GREEN).create());
+            return;
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("start")) {
+            ProxiedPlayer player = (ProxiedPlayer) sender;
+            new startup(player.getName());
             return;
         }
     }
