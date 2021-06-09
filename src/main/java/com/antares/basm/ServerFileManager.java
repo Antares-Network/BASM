@@ -5,25 +5,21 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 import java.util.TimeZone;
 import java.util.UUID;
 
 public class ServerFileManager {
     public ServerFileManager(String name, String port, UUID UUID) throws IOException, URISyntaxException {
         newDir(name);
-        editProperties(name, port);
-        editStartScript(name);
-        editPAPIConfig(name);
-        editAccess(name, UUID);
-        serverStart(name);
+        editProperties(name, port, UUID);
+        new startup(name);
         System.out.println("All modifications completed successfully");
     }
 
@@ -75,52 +71,31 @@ public class ServerFileManager {
         }
     }
 
-    public static void editProperties(String name, String port) {
+    private void editProperties(String name, String port, UUID UUID) {
+
+        // Properties p = new Properties();
+        // p.setProperty("motd", name);
+        // p.setProperty("rcon.port", port);
+        // p.setProperty("query.port", port);
+        // p.setProperty("server-port", port);
+        // try {
+        //     p.store(new FileWriter("server.properties"), name);
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
         // Get the current date and format it appropriately
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        modifyFile("../" + name + "/server.properties", "#creationTime",
-                "# Server Created at: " + simpleDateFormat.format(new Date()));
         modifyFile("../" + name + "/server.properties", "serverPort", port);
         modifyFile("../" + name + "/server.properties", "rconPort", port);
         modifyFile("../" + name + "/server.properties", "queryPort", port);
         modifyFile("../" + name + "/server.properties", "serverMOTD", name);
-    }
-
-    public static void editStartScript(String name) {
-        modifyFile("../" + name + "/start.sh", "template", name);
-    }
-
-    public static void editPAPIConfig(String name) {
-        modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
-    }
-
-    private void editAccess(String name, UUID UUID) {
-        // edit the whitelist.json
+        modifyFile("../" + name + "/server.properties", "#creationTime", "# Server Created at: " + simpleDateFormat.format(new Date()));
         modifyFile("../" + name + "/whitelist.json", "playerUUID", UUID.toString());
         modifyFile("../" + name + "/whitelist.json", "username", name);
-
-        // Edit the ops.json
         modifyFile("../" + name + "/ops.json", "playerUUID", UUID.toString());
         modifyFile("../" + name + "/ops.json", "username", name);
-    }
-
-    public static void serverStart(String name) throws IOException {
-        System.out.println("cd " + new File(".").getAbsolutePath().replace("waterfall/.", name));
-        // "cd " + new File(".").getAbsolutePath().replace("waterfall/.", name)
-        ProcessBuilder pb = new ProcessBuilder(
-                new String[] {"java", "-jar", new File(".").getAbsolutePath().replace("waterfall/.", name) + "/paper_latest.jar"});
-                // new String[] { "sh", new File(".").getAbsolutePath().replace("waterfall/.", name) + "/start.sh" });
-        pb.redirectErrorStream(true);
-        pb.directory(new File(new File(".").getAbsolutePath().replace("waterfall/.", name)));
-        try {
-            Thread.sleep(8000);
-            Process p = pb.start();
-        } catch (IOException exp) {
-            exp.printStackTrace();
-        } catch (InterruptedException exp) {
-            exp.printStackTrace();
-        }
-        System.out.println("Server has been started");
+        modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
+        modifyFile("../" + name + "/start.sh", "template", name);
     }
 }
