@@ -28,17 +28,17 @@ public class ServerCreator {
     public StateMessage[] create() {
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
         ServerInfo info = basm.getProxy().constructServerInfo(player.getName(), address, motd, restricted);
+        StateMessage[] messages = new StateMessage[2];
+        messages[0] = ServerHelper.addServer(info);
+        if (messages[0].state == State.ERROR) {
+            return new StateMessage[] {messages[0]};
+        }
         try {
             ServerFileManager result = new ServerFileManager(player.getName(), String.valueOf(info.getAddress().getPort()), player.getUniqueId());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (URISyntaxException e) {
             e.printStackTrace();
-        }
-        StateMessage[] messages = new StateMessage[2];
-        messages[0] = ServerHelper.addServer(info);
-        if (messages[0].state == State.ERROR) {
-            return new StateMessage[] {messages[0]};
         }
         messages[1] = ServerHelper.addServerToConfig(info);
         return messages;
