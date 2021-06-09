@@ -6,7 +6,7 @@
 
     <groupId>org.antares</groupId>
     <artifactId>basm</artifactId>
-    <version>0.1-alpha</version>
+    <version>0.1-pre-1</version>
 
     <repositories>
         <repository>
