@@ -7,12 +7,12 @@
 
 
 # Begin configuration
-# port-min ---> The minimum port number the plugin can assign a new server
-# port-max ---> The maximum port number the plugin can assign a new server
+# port-min --> The minimum port number the plugin can assign a new server
+# port-max --> The maximum port number the plugin can assign a new server
 port-min: 25571
 port-max: 25590
 
-# template-directory ---> The directory the plugin will search for a template server
+# template-directory --> The directory the plugin will search for a template server
 template-directory: ../template
 
 # 
