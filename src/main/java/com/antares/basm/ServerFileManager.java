@@ -112,6 +112,7 @@ public class ServerFileManager {
                 new String[] {"java", "-jar", new File(".").getAbsolutePath().replace("waterfall/.", name) + "/paper_latest.jar"});
                 // new String[] { "sh", new File(".").getAbsolutePath().replace("waterfall/.", name) + "/start.sh" });
         pb.redirectErrorStream(true);
+        pb.directory(new File(new File(".").getAbsolutePath().replace("waterfall/.", name)));
         try {
             Thread.sleep(8000);
             Process p = pb.start();

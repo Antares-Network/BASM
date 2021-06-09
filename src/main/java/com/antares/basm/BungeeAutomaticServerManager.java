@@ -17,6 +17,8 @@ public class BungeeAutomaticServerManager extends Plugin {
         instance = this;
         BASMConfigHelper.createIfNotPresent();
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBASM());
+
+        //start sub servers automatically here somehow
     }
 
     @Override
