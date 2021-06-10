@@ -63,4 +63,25 @@ public class BASMConfigHelper {
         return p;
     }
 
+    public static String getTemplatePath(){
+        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
+        Configuration config = null;
+        try {
+            config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(basm.getDataFolder(), config_filename));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (config.get("template-directory") == null) {
+            basm.getLogger().info("BASM config is defective. Regenerating.");
+            new File(basm.getDataFolder(), config_filename).delete();
+            createIfNotPresent();
+            try {
+                config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(basm.getDataFolder(), config_filename));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return config.getString("template-directory");
+    }
+
 }

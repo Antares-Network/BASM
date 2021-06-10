@@ -7,6 +7,10 @@
 
 
 # Begin configuration
+
+# prefix --> The Text that will show up before every message the plugin sends
+prefix: "Some Prefix"
+
 # port-min --> The minimum port number the plugin can assign a new server
 # port-max --> The maximum port number the plugin can assign a new server
 port-min: 25571
