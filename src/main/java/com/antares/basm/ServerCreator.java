@@ -2,16 +2,14 @@ package com.antares.basm;
 
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
-import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.InetSocketAddress;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.*;
 
 public class ServerCreator {
 
@@ -21,6 +19,7 @@ public class ServerCreator {
     public String motd;
     public boolean restricted;
     public int port;
+    
 
     public ServerCreator(ProxiedPlayer player, InetSocketAddress address, String motd, boolean restricted) {
         this.uid = player.getUniqueId();
@@ -48,24 +47,23 @@ public class ServerCreator {
             e.printStackTrace();
         }
         messages[1] = ServerHelper.addServerToConfig(info);
-
+        
         try {
-            BufferedWriter writer = Files.newBufferedWriter(Paths.get(basm.getProxy().getPluginsFolder() + "/server_dictionary.json"));
-            Map<String, Object> server = new HashMap<>();
-            server.put("id", 1);
-            server.put("owner", player.getName());
-            server.put("name", player.getName());
-            server.put("nickname", "");
-            server.put("UUID", player.getUniqueId());
-            server.put("discord", "");
-            ObjectMapper mapper = new ObjectMapper();
-            writer.write(mapper.writeValueAsString(server));
+            Entry entry = new Entry(player.getName(), player.getUniqueId(), info.getAddress().getPort(), "");
+            
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            // create a writer
+            Writer writer = Files.newBufferedWriter(Paths.get("server_dictionary.json"));
+        
+            // convert user object to JSON file
+            gson.toJson(entry, writer);
+        
+            // close writer
             writer.close();
+        
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
-
         return messages;
     }
 
