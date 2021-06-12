@@ -59,6 +59,7 @@ public class CommandBASM extends Command {
         if (args.length == 1 && args[0].equalsIgnoreCase("start")) {
             ProxiedPlayer player = (ProxiedPlayer) sender;
             new startup(player.getName());
+            sender.sendMessage(new ComponentBuilder("Your server is starting. Please wait a minute before trying to connect.").color(ChatColor.GREEN).create());
             return;
         }
     }
