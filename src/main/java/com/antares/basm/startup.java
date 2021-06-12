@@ -33,7 +33,7 @@ public class startup {
         }
     }
 
-    public static void serverStart(String name) throws IOException {
+    public static StateMessage serverStart(String name) throws IOException {
         ProcessBuilder pb = new ProcessBuilder(new String[] { "java", "-jar",
                 new File(".").getAbsolutePath().replace("waterfall/.", name) + "/paper_latest.jar" });
         pb.redirectErrorStream(true);
@@ -47,6 +47,6 @@ public class startup {
             exp.printStackTrace();
         }
         System.out.println("Server has been started");
+        return new StateMessage(State.SUCCESS, "Your server is starting");
     }
-
 }
