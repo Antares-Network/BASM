@@ -1,9 +1,8 @@
 package com.antares.basm;
 
+import java.nio.file.Path;
 import java.util.Date;
 import java.util.UUID;
-
-
 
 public class Entry {
     public String name;
@@ -11,15 +10,14 @@ public class Entry {
     public int port;
     public String discord;
     public Date TSLL;
+    public Path serverPath;
 
-    public Entry() {
-    }
-
-    public Entry(String name, UUID uuid, int port, String discord) {
+    public Entry(String name, UUID uuid, int port, String discord, Path path) {
         this.name = name;
         this.uuid = uuid;
         this.port = port;
         this.discord = discord;
+        this.serverPath = path;
     }
 
     public void setName(String name){
@@ -36,5 +34,8 @@ public class Entry {
     }
     public void setTSLL(Date TSLL){
         this.TSLL = TSLL;
+    }
+    public void setServerPath(Path path){
+        this.serverPath = path;
     }
 }

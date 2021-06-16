@@ -23,6 +23,7 @@ address-of-server-machine: 172.0.0.1  # localhost, 192.168.1.1, example.com
 
 # template-directory --> The directory the plugin will search for a template server
 template-directory: "/home/network/waterfall/plugins/basm/template"
+sub-server-path-template: "/home/network/servers/"
 
 
 # max-server-count-individual --> The max number of servers one person can own
@@ -43,3 +44,4 @@ create-no-permission: "You do not have permission to create a server. If you bel
 delete-no-permission: "You do not have permission to delete this server. If you are the server owner and you believe this is an error, contact the network owner."
 basm-no-permission: "You do not have permission to run the command {last-run-basm-command}. If you believe this is an error, contact the network owner."
 edit-server-info-no-permission: "You do not have permission to edit this servers information. If you are the server owner and believe this is an error, contact the network owner."
+no-command: "No such BASM command exists. Check your syntax."

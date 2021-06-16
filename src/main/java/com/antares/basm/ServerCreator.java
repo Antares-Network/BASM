@@ -2,6 +2,7 @@ package com.antares.basm;
 
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+import java.io.File;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.InetSocketAddress;
@@ -49,7 +50,7 @@ public class ServerCreator {
         messages[1] = ServerHelper.addServerToConfig(info);
         
         try {
-            Entry entry = new Entry(player.getName(), player.getUniqueId(), info.getAddress().getPort(), "");
+            Entry entry = new Entry(player.getName(), player.getUniqueId(), info.getAddress().getPort(), "", new File("/home/network/servers/"+ player.getName()).toPath());
             
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             // create a writer

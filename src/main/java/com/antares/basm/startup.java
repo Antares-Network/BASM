@@ -35,7 +35,7 @@ public class startup {
 
     public static StateMessage serverStart(String name) throws IOException {
         ProcessBuilder pb = new ProcessBuilder(new String[] { "java", "-jar",
-                new File(".").getAbsolutePath().replace("waterfall/.", name) + "/paper_latest.jar" });
+                new File(".").getAbsolutePath().replace("waterfall/.", name) + "/paper_latest.jar"});
         pb.redirectErrorStream(true);
         pb.directory(new File(new File(".").getAbsolutePath().replace("waterfall/.", name)));
         try {
