@@ -1,0 +1,47 @@
+# This is the main configuration file for BungeeAutomaticServerManager.
+# There isn't much to configure but if you need assistance, look at the wiki at
+# https://github.com/Antares-Network/BASM/wiki
+# 
+# Discord Server: https://dsc.gg/antaresnetwork
+# Main page: https://github.com/Antares-Network
+
+
+# Begin configuration
+
+# prefix --> The Text that will show up before every message the plugin sends
+prefix: "&a&lBASM &7&l» "
+
+
+# port-min --> The minimum port number the plugin can assign a new server
+# port-max --> The maximum port number the plugin can assign a new server
+port-min: 25571
+port-max: 25590
+
+# address-of-server-machine --> The ip address or domain where the sub servers are hosted
+address-of-server-machine: 172.0.0.1  # localhost, 192.168.1.1, example.com
+
+
+# template-directory --> The directory the plugin will search for a template server
+template-directory: "/home/network/waterfall/plugins/basm/template"
+sub-server-path-template: "/home/network/servers/"
+
+
+# max-server-count-individual --> The max number of servers one person can own
+# max-server-count-total --> The max number of servers allowed to be created using basm
+max-server-count-individual: 1
+max-server-count-total: 10
+
+
+# Messages:
+
+server-exists: "You already have a server. Access it using /server {player-name}."
+update-error: "There was an issue updating the sub-server jars. Please contact the server administrator."
+server-in-cold-storage: "Your server has not been logged into in {TSLL-dhm} days, or has been manually moved to cold-storage. Please contact the network owner."
+server-not-running: "Your server is not currently running. You can start it with /basm start."
+server-delete-warning: " You are about to delete your server. This is irreversible. To confirm deletion, use /basm confirmdelete"
+server-delete-confirm-warning: " You have confirmed you wish to delete your server. To cancel, use /basm canceldelete. You have 20 seconds."
+create-no-permission: "You do not have permission to create a server. If you believe this is an error, contact the network owner."
+delete-no-permission: "You do not have permission to delete this server. If you are the server owner and you believe this is an error, contact the network owner."
+basm-no-permission: "You do not have permission to run the command {last-run-basm-command}. If you believe this is an error, contact the network owner."
+edit-server-info-no-permission: "You do not have permission to edit this servers information. If you are the server owner and believe this is an error, contact the network owner."
+no-command: "No such BASM command exists. Check your syntax."
