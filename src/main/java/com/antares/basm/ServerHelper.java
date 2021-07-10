@@ -43,7 +43,7 @@ public class ServerHelper {
             e.printStackTrace();
         }
         basm.getLogger().info("Server " + info.getName() + " was successfully added to the BungeeCord config.");
-        return new StateMessage(State.SUCCESS, "Your server was added to the BungeeCord config.");
+        return new StateMessage(State.SUCCESS, "Your server is starting. Please wait a minute before trying to connect.");
     }
 
 
@@ -55,7 +55,7 @@ public class ServerHelper {
         }
         basm.getProxy().getServers().put(info.getName(), info);
         basm.getLogger().info("Server " + info.getName() + " was successfully added to the BungeeCord server map.");
-        return new StateMessage(State.SUCCESS, "Your server was added to the BungeeCord server map.");
+        return new StateMessage(State.SUCCESS, "Your server successfully created!");
     }
 
     public static boolean serverExists(String name) {
