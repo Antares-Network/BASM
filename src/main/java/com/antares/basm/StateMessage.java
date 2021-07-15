@@ -55,4 +55,14 @@ public class StateMessage {
         return component;
     }
 
+    public static StateMessage[] toArray(StateMessage message) {
+        StateMessage messages[] = {message};
+        return messages;
+    }
+
+    public static StateMessage[] toArray(State state, String message) {
+        StateMessage messages[] = { new StateMessage(state, message) };
+        return messages;
+    }
+
 }

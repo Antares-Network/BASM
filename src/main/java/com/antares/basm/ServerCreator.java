@@ -1,14 +1,18 @@
 package com.antares.basm;
 
+import com.google.common.reflect.TypeToken;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
 import java.net.InetSocketAddress;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import com.google.gson.*;
 
@@ -32,6 +36,9 @@ public class ServerCreator {
     }
 
     public StateMessage[] create() {
+        if (!new File("server_dictionary.json").exists()) {
+            return StateMessage.toArray(State.ERROR, "Server dictionary does not exist.");
+        }
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
         ServerInfo info = basm.getProxy().constructServerInfo(player.getName(), address, motd, restricted);
         StateMessage[] messages = new StateMessage[2];
@@ -51,19 +58,21 @@ public class ServerCreator {
         
         try {
             Entry entry = new Entry(player.getName(), player.getUniqueId(), info.getAddress().getPort(), "", new File("/home/network/servers/"+ player.getName()).toPath());
-            
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            // create a writer
+            Reader reader = Files.newBufferedReader(Paths.get("server_dictionary.json"));
+            List<Entry> entries = null;
+            entries = gson.fromJson(reader, new TypeToken<List<Entry>>(){}.getType());
+            if (entries == null) {
+                entries = new ArrayList<Entry>();
+            }
+            entries.add(entry);
             Writer writer = Files.newBufferedWriter(Paths.get("server_dictionary.json"));
-        
-            // convert user object to JSON file
-            gson.toJson(entry, writer);
-        
-            // close writer
+            gson.toJson(entries, writer);
             writer.close();
         
         } catch (Exception ex) {
             ex.printStackTrace();
+            return StateMessage.toArray(State.ERROR, "Failed to write server to server dictionary. See console for more details.");
         }
         return messages;
     }
