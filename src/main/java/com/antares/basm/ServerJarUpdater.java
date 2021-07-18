@@ -1,7 +1,11 @@
+package com.antares.basm;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.apache.commons.io.FileUtils;
 
 public class ServerJarUpdater {
     //compare the md5 of two files in different directories
@@ -47,4 +51,19 @@ public class ServerJarUpdater {
         System.out.println("Server jar updated sucessfully");
     }
 
+    public static void paperDownloader(String name, String targetDir){
+        String version = name.split("-")[1];
+        String build = name.split("-")[2];
+        try {
+            URL url = new URL("https://papermc.io/api/v2/projects/paper/versions/" + version + "/builds/" + build + "/downloads/paper-" + version + "-" + build +".jar");
+            FileUtils.copyURLToFile(url, new File(targetDir + "/paper_latest.jar"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void update(String[] args){
+        paperDownloader(args[2], "template");
+        updateServerJar("template", args[1], "paper_latest.jar");
+    }
 }

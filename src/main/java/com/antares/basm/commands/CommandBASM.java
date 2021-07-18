@@ -5,6 +5,7 @@ import com.antares.basm.ServerCreator;
 import com.antares.basm.ServerHelper;
 import com.antares.basm.StateMessage;
 import com.antares.basm.startup;
+import com.antares.basm.ServerJarUpdater;
 
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
@@ -60,6 +61,26 @@ public class CommandBASM extends Command {
             ProxiedPlayer player = (ProxiedPlayer) sender;
             new startup(player.getName());
             sender.sendMessage(new ComponentBuilder("Your server is starting. Please wait a minute before trying to connect.").color(ChatColor.GREEN).create());
+            return;
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("update")) {
+            sender.sendMessage(new ComponentBuilder("Updating the server jar for " + args[1] + "...").color(ChatColor.GREEN).create());
+            ServerJarUpdater.update(args);
+            
+            return;
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("downloadpaper")) {
+            sender.sendMessage(new ComponentBuilder("Downloading " + args[1] + "...").color(ChatColor.GREEN).create());
+            ServerJarUpdater.paperDownloader(args[1], "latest_jar");
+            return;
+        }
+        if (args.length == 1 && args[0].equalsIgnoreCase("updateall")) {
+            sender.sendMessage(new ComponentBuilder("Updating the server jar for all servers...").color(ChatColor.GREEN).create());
+            // loop through the bungeecord config and update each server
+            for (String server : ServerHelper.servers().values()) {
+                String fauxArgs[] = {"updateall", args[1], server};
+                ServerJarUpdater.update(fauxArgs);
+            }
             return;
         }
     }
