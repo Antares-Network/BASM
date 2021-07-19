@@ -13,7 +13,7 @@ enum Port { PORT_MIN, PORT_MAX }
 
 public class BASMConfigHelper {
 
-    private static final String config_filename = "basm.yml";
+    private static final String config_filename = "config.yml";
 
     public static void createIfNotPresent() {
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
