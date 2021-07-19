@@ -4,8 +4,6 @@ import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 
-import java.awt.*;
-
 public class InfoCommand {
 
     ComponentBuilder[] infoPage() {

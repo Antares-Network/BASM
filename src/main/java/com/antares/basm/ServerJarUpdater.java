@@ -1,11 +1,13 @@
 package com.antares.basm;
+
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import org.apache.commons.io.FileUtils;
 
 public class ServerJarUpdater {
     //compare the md5 of two files in different directories

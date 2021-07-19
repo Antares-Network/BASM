@@ -1,8 +1,11 @@
 package com.antares.basm;
 
 import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.Reader;
@@ -14,7 +17,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import com.google.gson.*;
 
 public class ServerCreator {
 

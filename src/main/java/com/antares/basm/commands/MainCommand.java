@@ -1,20 +1,7 @@
 package com.antares.basm.commands;
 
-import com.antares.basm.BungeeAutomaticServerManager;
-import com.antares.basm.ServerCreator;
-import com.antares.basm.ServerHelper;
-import com.antares.basm.StateMessage;
-import com.antares.basm.Startup;
-import com.antares.basm.ServerJarUpdater;
-
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.config.ServerInfo;
-import net.md_5.bungee.api.connection.ProxiedPlayer;
 import net.md_5.bungee.api.plugin.Command;
-
-import java.net.InetSocketAddress;
 //import java.util.UUID; //!To be changed later if needed. Maybe we should add this as a configurable option to have the servers registered under UUID's rather than usernames
 
 public class MainCommand extends Command {
