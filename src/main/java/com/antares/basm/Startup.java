@@ -3,9 +3,9 @@ package com.antares.basm;
 import java.io.File;
 import java.io.IOException;
 
-public class startup {
+public class Startup {
 
-    public startup(String[] names) {
+    public Startup(String[] names) {
         for (String name : names) {
             File filePath = new File(new File(".").getAbsolutePath().replace("waterfall/.", name));
             if (filePath.exists()) {
@@ -20,7 +20,7 @@ public class startup {
         }
     }
 
-    public startup(String name) {
+    public Startup(String name) {
         File filePath = new File(new File(".").getAbsolutePath().replace("waterfall/.", name));
         if (filePath.exists()) {
             try {

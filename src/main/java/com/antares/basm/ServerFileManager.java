@@ -18,7 +18,7 @@ public class ServerFileManager {
     public ServerFileManager(String name, String port, UUID UUID) throws IOException, URISyntaxException {
         newDir(name);
         editProperties(name, port, UUID);
-        new startup(name);
+        new Startup(name);
         System.out.println("All modifications completed successfully");
     }
 

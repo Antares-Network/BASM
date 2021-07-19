@@ -51,7 +51,7 @@ public class ServerJarUpdater {
         System.out.println("Server jar updated sucessfully");
     }
 
-    public static void paperDownloader(String name, String targetDir){
+    public static void downloadPaper(String name, String targetDir){
         String version = name.split("-")[1];
         String build = name.split("-")[2];
         try {
@@ -63,7 +63,7 @@ public class ServerJarUpdater {
     }
 
     public static void update(String[] args){
-        paperDownloader(args[2], "template");
+        downloadPaper(args[2], "template");
         updateServerJar("template", args[1], "paper_latest.jar");
     }
 }
