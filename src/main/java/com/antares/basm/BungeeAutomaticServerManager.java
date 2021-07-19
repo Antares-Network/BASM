@@ -1,6 +1,6 @@
 package com.antares.basm;
 
-import com.antares.basm.commands.CommandBASM;
+import com.antares.basm.commands.MainCommand;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -16,7 +16,7 @@ public class BungeeAutomaticServerManager extends Plugin {
     public void onEnable() {
         instance = this;
         BASMConfigHelper.createIfNotPresent();
-        ProxyServer.getInstance().getPluginManager().registerCommand(this, new CommandBASM());
+        ProxyServer.getInstance().getPluginManager().registerCommand(this, new MainCommand());
 
         //start sub servers automatically here somehow
     }
