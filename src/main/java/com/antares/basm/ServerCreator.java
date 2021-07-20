@@ -38,8 +38,13 @@ public class ServerCreator {
     }
 
     public StateMessage[] create() {
-        if (!new File("server_dictionary.json").exists()) {
-            return StateMessage.toArray(State.ERROR, "Server dictionary does not exist.");
+        File dictionary = new File("server_dictionary.json");
+        if (!dictionary.exists()) {
+            try {
+                dictionary.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
         ServerInfo info = basm.getProxy().constructServerInfo(player.getName(), address, motd, restricted);

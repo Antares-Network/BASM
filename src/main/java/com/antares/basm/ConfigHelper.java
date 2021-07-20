@@ -30,12 +30,19 @@ public class ConfigHelper {
     public ConfigHelper(String config_filename) {
         this.config_filename = config_filename;
         this.basm = BungeeAutomaticServerManager.getInstance();
+        if (!new File(basm.getDataFolder(), config_filename).exists()) {
+            this.config = null;
+            return;
+        }
+        loadConfig();
+    }
+
+    public void loadConfig() {
         try {
             this.config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(basm.getDataFolder(), config_filename));
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public boolean isDefective() {
@@ -63,7 +70,9 @@ public class ConfigHelper {
             Files.copy(input_stream, config_file.toPath());
         } catch (IOException e) {
             e.printStackTrace();
+            return;
         }
+        loadConfig();
     }
 
     public void regenerate() {

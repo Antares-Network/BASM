@@ -19,10 +19,10 @@ public class CreateCommand {
                     .color(ChatColor.RED).create());
             return;
         }
-        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance(); //! This var is defined but never used
         ProxiedPlayer player = (ProxiedPlayer) sender;
+        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance(); //! This var is defined but never used
         int port = ServerHelper.nextFreePort();
-        String motd = player + "'s Server (" + String.valueOf(port) + ")";
+        String motd = player.getDisplayName() + "'s Server (" + String.valueOf(port) + ")";
         boolean restricted = false;
         InetSocketAddress address = new InetSocketAddress("localhost", port);
         ServerCreator creator = new ServerCreator(player, address, motd, restricted);
