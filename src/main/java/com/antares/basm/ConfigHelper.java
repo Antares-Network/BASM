@@ -15,7 +15,6 @@ enum Port { PORT_MIN, PORT_MAX }
 
 public class ConfigHelper {
 
-<<<<<<< HEAD:src/main/java/com/antares/basm/ConfigHelper.java
     public String config_filename;
     public Configuration config;
     public BungeeAutomaticServerManager basm;
@@ -27,11 +26,6 @@ public class ConfigHelper {
             "msg-create-no-permission", "msg-delete-no-permission", "msg-basm-no-permission",
             "msg-edit-server-info-no-permission", "msg-no-command"
     };
-=======
-    private static final String config_filename = "config.yml";
->>>>>>> b93baedd9ef9247b4dc8a74e57255a508e552635:src/main/java/com/antares/basm/BASMConfigHelper.java
-
-
 
     public ConfigHelper(String config_filename) {
         this.config_filename = config_filename;
