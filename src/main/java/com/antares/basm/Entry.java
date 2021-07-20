@@ -10,14 +10,14 @@ public class Entry {
     public int port;
     public String discord;
     public Date TSLL;
-    public Path serverPath;
+    public String path;
 
-    public Entry(String name, UUID uuid, int port, String discord, Path path) {
+    public Entry(String name, UUID uuid, int port, String discord, String path) {
         this.name = name;
         this.uuid = uuid;
         this.port = port;
         this.discord = discord;
-        this.serverPath = path;
+        this.path = path;
     }
 
     public void setName(String name){
@@ -35,7 +35,7 @@ public class Entry {
     public void setTSLL(Date TSLL){
         this.TSLL = TSLL;
     }
-    public void setServerPath(Path path){
-        this.serverPath = path;
+    public void setPath(String path){
+        this.path = path;
     }
 }

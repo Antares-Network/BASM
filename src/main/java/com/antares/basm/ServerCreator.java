@@ -64,7 +64,7 @@ public class ServerCreator {
         messages[1] = ServerHelper.addServerToConfig(info);
         
         try {
-            Entry entry = new Entry(player.getName(), player.getUniqueId(), info.getAddress().getPort(), "", new File("/home/network/servers/"+ player.getName()).toPath());
+            Entry entry = new Entry(player.getName(), player.getUniqueId(), info.getAddress().getPort(), "","/home/network/servers/"+ player.getName());
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Reader reader = Files.newBufferedReader(Paths.get("server_dictionary.json"));
             List<Entry> entries = null;
