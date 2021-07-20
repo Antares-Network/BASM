@@ -3,25 +3,27 @@ package com.antares.basm;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.DigestInputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class ServerJarUpdater {
-    //compare the md5 of two files in different directories
+
+    // compare the md5 of two files
     public static boolean compareMD5(String file1, String file2) {
         try {
-            Path path1 = Paths.get(file1);
-            Path path2 = Paths.get(file2);
-            String md51 = Files.readAllLines(path1).get(0);
-            String md52 = Files.readAllLines(path2).get(0);
-            return md51.equals(md52);   //if md5 is the same, return true
+            return Files.readAllBytes(Paths.get(file1)).length == Files.readAllBytes(Paths.get(file2)).length;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
-        return false;
     }
     
     //copy a file with a given name from a source directory to the target directory if the source file exists

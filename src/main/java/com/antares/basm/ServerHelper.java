@@ -65,7 +65,8 @@ public class ServerHelper {
 
     public static int nextFreePort() {
         BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
-        int maxport = BASMConfigHelper.getPort(Port.PORT_MIN);
+        ConfigHelper helper = basm.helper;
+        int maxport = helper.getPort(Port.PORT_MIN);
         Map<String, ServerInfo> smap = servers();
         for (String server : smap.keySet()) {
             int port = smap.get(server).getAddress().getPort();
@@ -74,7 +75,7 @@ public class ServerHelper {
             }
         }
         maxport ++;
-        if (maxport > BASMConfigHelper.getPort(Port.PORT_MAX)) {
+        if (maxport > helper.getPort(Port.PORT_MAX)) {
             basm.getLogger().info("Error: Ran out of free ports.");
             return -1;
         }
