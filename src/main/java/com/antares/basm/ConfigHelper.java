@@ -77,6 +77,7 @@ public class ConfigHelper {
 
     public void regenerate() {
         File config_file = Paths.get(config_filename).toFile();
+        basm.getLogger().warning("Regenerating Config file.");
         try {
             Files.copy(config_file.toPath(), Paths.get(config_filename + ".backup"));
         } catch (IOException e) {
@@ -84,6 +85,7 @@ public class ConfigHelper {
         }
         config_file.delete();
         createIfNotPresent();
+        basm.getLogger().warning("The old config was defective. A back up of the old config has been created.");
     }
 
     public int getPort(Port port) {
@@ -95,7 +97,7 @@ public class ConfigHelper {
             e.printStackTrace();
         }
         if (config.get("port-min") == null || config.get("port-max") == null) {
-            basm.getLogger().info("BASM config is defective. Regenerating.");
+            basm.getLogger().warning("BASM config is defective. Regenerating.");
             new File(basm.getDataFolder(), config_filename).delete();
             createIfNotPresent();
             try {
@@ -125,7 +127,7 @@ public class ConfigHelper {
             e.printStackTrace();
         }
         if (config.get("template-directory") == null) {
-            basm.getLogger().info("BASM config is defective. Regenerating.");
+            basm.getLogger().warning("BASM config is defective. Regenerating.");
             new File(basm.getDataFolder(), config_filename).delete();
             createIfNotPresent();
             try {

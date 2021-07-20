@@ -19,12 +19,16 @@ public class BungeeAutomaticServerManager extends Plugin {
         helper = new ConfigHelper("config.yml");
         helper.createIfNotPresent();
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new MainCommand());
+        instance.getLogger().info("BASM has been successfully started");
 
         //start sub servers automatically here somehow
     }
 
     @Override
     public void onDisable() {
+        instance.getLogger().info("Shutting down BASM.");
+        instance.getLogger().info("Goodnight.");
+        
 
     }
 

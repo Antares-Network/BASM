@@ -1,6 +1,6 @@
 package com.antares.basm.commands;
 
-import com.antares.basm.BungeeAutomaticServerManager;
+//? import com.antares.basm.BungeeAutomaticServerManager;
 import com.antares.basm.ServerCreator;
 import com.antares.basm.ServerHelper;
 import com.antares.basm.StateMessage;
@@ -20,7 +20,8 @@ public class CreateCommand {
             return;
         }
         ProxiedPlayer player = (ProxiedPlayer) sender;
-        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance(); //! This var is defined but never used
+        //! This var is defined but never used
+        //? BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance(); //! does this break anything?
         int port = ServerHelper.nextFreePort();
         String motd = player.getDisplayName() + "'s Server (" + String.valueOf(port) + ")";
         boolean restricted = false;

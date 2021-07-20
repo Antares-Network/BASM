@@ -10,8 +10,8 @@ public class StartCommand {
 
     public void execute(CommandSender sender, String[] args) {
         ProxiedPlayer player = (ProxiedPlayer) sender;
-        new Startup(player.getName());
         sender.sendMessage(new ComponentBuilder("Your server is starting. Please wait a minute before trying to connect.").color(ChatColor.GREEN).create());
+        new Startup(player.getName());
     }
 
 }
