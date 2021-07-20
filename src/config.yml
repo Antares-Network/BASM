@@ -22,7 +22,7 @@ machine-address: 172.0.0.1  # localhost, 192.168.1.1, example.com
 
 
 # template-directory --> The directory the plugin will search for a template server
-template-directory: "/home/network/waterfall/plugins/basm/template"
+template-directory: "/home/network/waterfall/plugins/basm/template/"
 servers-directory: "/home/network/servers/"
 
 
@@ -33,7 +33,6 @@ total-max-server-count: 10
 
 
 # Messages:
-
 msg-server-exists: "You already have a server. Access it using /server {player-name}."
 msg-update-error: "There was an issue updating the sub-server jars. Please contact the server administrator."
 msg-server-in-cold-storage: "Your server has not been logged into in {TSLL-dhm} days, or has been manually moved to cold-storage. Please contact the network owner."

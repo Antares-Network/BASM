@@ -15,6 +15,7 @@ public class ServerFileManager {
         newDir(name);
         editProperties(name, port, UUID);
         new Startup(name);
+        //! change to basm logger in the future. As a matter of fact, do this to every System.out.println
         System.out.println("All modifications completed successfully");
     }
 

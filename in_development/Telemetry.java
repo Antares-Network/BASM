@@ -7,7 +7,7 @@ public class Telemetry {
         // format the date
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = sdf.format(date);
-        /
+        
         
         System.out.println("First Use Telemetry: " + id + ": " + ip + ": " + time + ". This data is anonymous and is used to help the developers optimize the plugin");
     }
