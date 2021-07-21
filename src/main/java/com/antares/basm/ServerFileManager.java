@@ -1,7 +1,11 @@
 package com.antares.basm;
 
+import com.google.common.base.Charsets;
+
 import java.io.*;
 import java.net.URISyntaxException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,56 +16,32 @@ import java.util.UUID;
 
 public class ServerFileManager {
     public ServerFileManager(String name, String port, UUID UUID) throws IOException, URISyntaxException {
-        newDir(name);
+//        newDir(name);
         editProperties(name, port, UUID);
         new Startup(name);
         //! change to basm logger in the future. As a matter of fact, do this to every System.out.println
         System.out.println("All modifications completed successfully");
     }
 
-    static void modifyFile(String filePath, String oldString, String newString) {
-        File fileToBeModified = new File(filePath);
-        String oldContent = "";
-        BufferedReader reader = null;
-        FileWriter writer = null;
-        try {
-            reader = new BufferedReader(new FileReader(fileToBeModified));
-            // Reading all the lines of input text file into oldContent
-            String line = reader.readLine();
-            while (line != null) {
-                oldContent = oldContent + line + System.lineSeparator();
-                line = reader.readLine();
-            }
-            // Replacing oldString with newString in the oldContent
-            String newContent = oldContent.replaceAll(oldString, newString);
-            // Rewriting the input text file with newContent
-            writer = new FileWriter(fileToBeModified);
-            writer.write(newContent);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                // Closing the resources
-                reader.close();
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    private boolean copyServerTemplate(Path template, Path dest) {
+        File template_file = template.toFile();
+        File dest_file = template.toFile();
+        if (!dest_file.exists() || !template_file.exists()) {
+            return false;
         }
     }
 
-    public static void newDir(String path) throws IOException {
-        BungeeAutomaticServerManager basm = BungeeAutomaticServerManager.getInstance();
-
-        Path fromPath = new File(basm.getProxy().getPluginsFolder(), "template/").toPath();
-        Files.walk(fromPath).forEach(source -> copySourceToDest(path, fromPath, source));
-    }
-
-    public static void copySourceToDest(String dest, Path fromPath, Path source) {
-        Path destination = Paths.get("../" + dest, source.toString().substring(fromPath.toString().length()));
+    private void replaceInFile(File file, String regex, String newstr) {
+        Path path = file.toPath();
+        String content = null;
         try {
-            Files.copy(source, destination);
-
+            content = new String(Files.readAllBytes(path));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        content.replaceAll(regex, newstr);
+        try {
+            Files.write(path, content.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,11 +67,11 @@ public class ServerFileManager {
         modifyFile("../" + name + "/server.properties", "queryPort", port);
         modifyFile("../" + name + "/server.properties", "serverMOTD", name);
         modifyFile("../" + name + "/server.properties", "#creationTime", "# Server Created at: " + simpleDateFormat.format(new Date()));
-        modifyFile("../" + name + "/whitelist.json", "playerUUID", UUID.toString());
-        modifyFile("../" + name + "/whitelist.json", "username", name);
-        modifyFile("../" + name + "/ops.json", "playerUUID", UUID.toString());
+//        modifyFile("../" + name + "/whitelist.json", "playerUUID", UUID.toString());
+//        modifyFile("../" + name + "/whitelist.json", "username", name);
+//        modifyFile("../" + name + "/ops.json", "playerUUID", UUID.toString());
         modifyFile("../" + name + "/ops.json", "username", name);
-        modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
+//        modifyFile("../" + name + "/plugins/PlaceholderAPI/config.yml", "serverName", name);
         modifyFile("../" + name + "/start.sh", "template", name);
     }
 }
